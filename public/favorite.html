@@ -3,25 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <title>Favourite movies</title>
-  <link rel="stylesheet" type="text/css" href="css/styleVue.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
-<div id="app">
-<h1>Favourite movies</h1>
-  <form v-on:submit.prevent="addMovie">
-    <label>Add movie: </label>
-    <input type="text" v-model="newMovie" placeholder="Name of movie">
+<body class="favoriteBody">
+
+  
+    <div class="navbar">
+        <!--<img src="./Images/MovieCenterLogo.png" alt="" class="Logo"> LOGO --> 
+        <ul>
+            <li><a href="carousel.html">Carousel</a></li>
+            <li><a href="surprise.html">Random</a></li>
+            <li><a href="#">Library</a></li>
+            <li><a href="favorite.html">Favourite</a></li>
+        </ul>
+    </div>
+<!--
+    <div class="content">
+        <h1>MovieCenter</h1>
+    </div>
+    <div>
+        <button class="signup-btn" type="button"><span class="cover"></span>Sign up</button>
+        <button class="login-btn" type="button"><span class="cover"></span>Login</button>
+    </div>
+    -->
+
+<div id="app" class="center">
+  <form v-on:submit.prevent="addMovie" class="addMovie">
+    <label class="labelText">Add movie: </label>
+    <input type="text" v-model="newMovie" placeholder="Name of movie" class="input">
     <button>Add</button>
   </form>
   <h2>{{newMovie}}</h2>
+  <div class="list">
   <ul>
     <li v-for="(Movie, index) in MovieArray" :class="{MovieFavorite: Movie.favorite}">
       {{Movie.name}}
       <button @click="deleteMovie(index)">Delete</button>
-      <button @click="makeMovieFavorite(Movie)">Make favorite</button>
     </li>
   </ul>
 </div>
+
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
@@ -62,5 +83,6 @@
     }
   }).mount('#app')
 </script>
+</div>
 </body>
 </html>
